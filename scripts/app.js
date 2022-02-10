@@ -1,7 +1,8 @@
 let game1
 const puzzleDIV = document.querySelector('#puzzle');
 const remainingDIV = document.querySelector('#guesses');
-const guessedDIV = document.querySelector('#lettersList')
+const guessedDIV = document.querySelector('#lettersList');
+const imgDIV = document.querySelector('#hangman');
 
 window.addEventListener('keypress', (e) => {
     const guess = String.fromCharCode(e.charCode);
@@ -13,6 +14,7 @@ const render = () =>{
     puzzleDIV.innerHTML = '';
     remainingDIV.textContent = game1.statusMessage;
     guessedDIV.textContent = 'You guessed: ' + game1.guessedLetters.toString();
+    imgDIV.src = `./images/${game1.remainingGuesses}.png`;
 
     game1.puzzle.split('').forEach((letter) => {
         const letterEL = document.createElement('span');
